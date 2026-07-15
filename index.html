@@ -1,23 +1,632 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalWebPage",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://health.reliabledone.com/arthritis"
+      },
+      "headline": "2026년 연령별 관절염증상 자가진단 및 맞춤형 관리 가이드",
+      "image": [
+        "https://health.reliabledone.com/images/arthritis-guide.jpg"
+      ],
+      "datePublished": "2026-01-10T09:00:00+09:00",
+      "dateModified": "2026-07-16T10:30:00+09:00",
+      "author": {
+        "@type": "Organization",
+        "name": "대한관절건강연구소"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "메디컬 헬스 가이드",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://health.reliabledone.com/logo.png"
+        }
+      },
+      "description": "2026년 기준 관절염증상 자가진단법과 퇴행성 및 류마티스 관절염의 차이점을 상세히 다룹니다. 20대부터 60대까지 연령대별 평균 예상 치료 비용과 혜택, 실시간 건강 앱 계산기 활용법까지 종합 분석 정보를 제공합니다."
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary-color: #146c70; 
+            --secondary-color: #c87a53; 
+            --background-color: #f7f9f8; 
+            --card-background: #ffffff;
+            --text-color: #2c3531;
+            --light-border: #e2ebe9;
+            --highlight-bg: #fcf6f0;
+        }
+
+        body { 
+            font-family: 'Noto Sans KR', sans-serif; 
+            line-height: 1.9; 
+            margin: 0; 
+            padding: 0; 
+            background: var(--background-color); 
+            color: var(--text-color);
+        }
+
+        .container { 
+            max-width: 1000px; 
+            margin: 30px auto; 
+            padding: 0 20px; 
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #0f5255);
+            color: #ffffff;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(20, 108, 112, 0.15);
+        }
+
+        header h1 {
+            font-size: 2.3em;
+            margin: 0 0 15px 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin: 0 auto;
+            max-width: 700px;
+        }
+
+        nav {
+            background: var(--card-background);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95em;
+            padding: 8px 18px;
+            border-radius: 30px;
+            background: #f0f5f4;
+            transition: all 0.25s ease;
+        }
+
+        nav a:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+        }
+
+        section { 
+            background: var(--card-background); 
+            border-radius: 16px; 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.02); 
+            padding: 35px; 
+            margin-bottom: 35px;
+        }
+
+        h2 { 
+            color: var(--primary-color); 
+            font-size: 1.7em; 
+            margin-top: 0;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--light-border);
+        }
+
+        h3 { 
+            color: #1a8a90; 
+            font-size: 1.3em; 
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            text-align: justify;
+            margin-bottom: 20px;
+            color: #3e4744;
+        }
+
+        table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0;
+            margin: 25px 0; 
+            border: 1px solid var(--light-border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td { 
+            border-bottom: 1px solid var(--light-border); 
+            border-right: 1px solid var(--light-border);
+            padding: 14px; 
+            text-align: left; 
+            font-size: 0.95em;
+        }
+
+        th { 
+            background: #f0f5f4; 
+            color: var(--primary-color); 
+            font-weight: 600;
+            border-bottom: 2px solid var(--light-border);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        td:last-child, th:last-child {
+            border-right: none;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fafcfc;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            padding: 15px 35px;
+            background: var(--secondary-color);
+            color: #ffffff;
+            font-weight: 600;
+            border-radius: 30px;
+            box-shadow: 0 6px 18px rgba(200, 122, 83, 0.3);
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            font-size: 1.05em;
+            cursor: pointer;
+        }
+
+        .btn-cta:hover {
+            background: #b56740;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(200, 122, 83, 0.4);
+        }
+
+        .highlight-box {
+            background: var(--highlight-bg); 
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 10px 10px 0;
+            color: #51443c;
+            font-size: 0.95em;
+        }
+
+        .visual-chart {
+            background: #fbfcfc;
+            border: 1px solid var(--light-border);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .chart-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        .chart-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .chart-label {
+            width: 120px;
+            font-size: 0.9em;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .chart-bar-container {
+            flex-grow: 1;
+            background: #eef2f1;
+            border-radius: 8px;
+            height: 24px;
+            margin: 0 15px;
+            overflow: hidden;
+        }
+
+        .chart-bar-fill {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: #ffffff;
+            font-size: 0.8em;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: width 1s ease-in-out;
+        }
+
+        .chart-value {
+            width: 180px;
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        form {
+            background: #fbfcfc;
+            border: 1px solid var(--light-border);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 25px;
+        }
+
+        form label { 
+            display: block; 
+            margin-top: 18px; 
+            margin-bottom: 8px; 
+            font-weight: 600; 
+            color: var(--primary-color);
+            font-size: 0.95em;
+        }
+
+        form input[type="text"], 
+        form input[type="tel"], 
+        form input[type="number"], 
+        form select, 
+        form textarea {
+            width: 100%; 
+            padding: 12px 15px; 
+            border: 1px solid var(--light-border); 
+            border-radius: 8px; 
+            box-sizing: border-box; 
+            transition: all 0.3s;
+            font-size: 0.95em;
+            background-color: #ffffff;
+            color: var(--text-color);
+        }
+
+        form input:focus, 
+        form select:focus, 
+        form textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 8px rgba(20, 108, 112, 0.15);
+        }
+
+        .form-checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .form-checkbox-label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            font-size: 0.9em;
+            color: var(--text-color);
+            cursor: pointer;
+            background: #ffffff;
+            border: 1px solid var(--light-border);
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .form-checkbox-label input {
+            margin-right: 8px;
+        }
+
+        .form-checkbox-label:hover {
+            border-color: var(--primary-color);
+            background: #f4f8f7;
+        }
+
+        .external-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .external-links li {
+            margin-bottom: 12px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .external-links li::before {
+            content: "•";
+            color: var(--secondary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .external-links a {
+            color: var(--primary-color);
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .external-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .footer-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--light-border);
+        }
+
+        @media(max-width: 768px) {
+            header h1 { font-size: 1.8em; }
+            section { padding: 20px; }
+            .chart-row { flex-direction: column; align-items: flex-start; }
+            .chart-bar-container { margin: 10px 0; width: 100%; }
+            .chart-value { width: 100%; text-align: right; }
+            .form-checkbox-group { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>2026년 연령별 관절염증상 자가진단 및 맞춤형 예방 관리법</h1>
+            <p>초기 대처 방안부터 퇴행성 및 류마티스 질환 비교, 실질적인 건강 보조 솔루션과 비용 가이드까지 한눈에 확인하세요.</p>
+        </header>
+
+        <nav aria-label="네비게이션">
+            <ul>
+                <li><a href="#definition">질환 정의 및 종류</a></li>
+                <li><a href="#age-analysis">연령별 통계 분석</a></li>
+                <li><a href="#cost-analysis">치료 비용 및 혜택</a></li>
+                <li><a href="#community">이용자 실제 후기</a></li>
+                <li><a href="#ai-health">AI 기반 자가진단</a></li>
+                <li><a href="#self-test">통증 자가진단 폼</a></li>
+            </ul>
+        </nav>
+
+        <section id="definition">
+            <h2>관절염증상의 핵심 정의와 주요 종류별 차이점</h2>
+            <p>
+                현대인의 삶의 질을 위협하는 대표적인 만성 근골격계 질환인 관절염증상 은 관절 내부 또는 주변 조직에 생기는 염증적 변화를 의미합니다. 최근 통계에 따르면 이러한 관절 건강의 이상은 과거 노년층의 전유물이라는 인식에서 벗어나, 젊은 세대의 생활 패턴 변화와 밀접하게 연동되며 전 연령대로 확산되는 추세입니다. 일상 속에서 느껴지는 미세한 뻐근함이나 찌릿한 통증을 단순 피로로 오인해 방치할 경우 연골의 손실과 골조직의 변화가 가속화될 수 있으므로 정확한 원인 분석이 무엇보다 우선시됩니다.
+            </p>
+            <p>
+                임상적으로 가장 높은 빈도로 확인되는 질환 종류 는 크게 골관절염으로 불리는 퇴행성 관절염과 자가면역 체계의 이상으로 유발되는 류마티스 관절염 두 가지로 구분됩니다. 두 질환의 가장 큰 차이점 은 질병이 발생하는 원인과 초기 병리 기전에 있습니다. 퇴행성 관절염의 경우 오랜 기간 누적된 기계적 마찰과 노화로 인해 완충 작용을 하던 뼈 말단의 연골이 닳아 없어지면서 통증과 가동 범위 제한을 초래합니다. 반면 류마티스 관절염은 체내 면역 세포가 정상적인 활막 조직을 공격하여 생기는 염증성 질환으로, 대칭적인 다발성 통증을 동반하는 특징을 가지고 있습니다.
+            </p>
+            <div class="highlight-box">
+                <strong>관절염 종류별 임상적 장단점 요약:</strong> 退행성 질환은 통증이 특정 관절에 국한되어 진행 속도가 비교적 완만하고 적절한 운동 요법과 연골 관리로 가동성을 보존할 수 있는 장점 이 있지만, 한 번 마모된 관절 연골 자체는 자연 치유가 불가능하다는 단점 이 있습니다. 반면에 류마티스성 질환은 전신 증상 조절을 위한 내과적 약물 개입이 필수적이며 조기에 차단하지 못할 경우 관절 변형이 올 수 있는 강력한 단점 이 있으나, 치료제 기술의 발달로 인해 현대 의학에서는 완치에 가까운 관리를 도모할 수 있다는 장점 이 있습니다.
+            </div>
+            <p>
+                환자 개인의 해부학적 특성과 통증 발생 빈도를 고려하여 어떠한 상태에 해당하는지를 명확히 규명하는 정밀 컨설팅 과정이 필수적입니다. 자가 관리를 위한 영양 보충제나 전문 보조 기구 브랜드를 선택하기에 앞서, 개별 질병의 활동도와 심각도를 파악하는 일이 모든 건강 증진 과정의 기본 토대가 됩니다.
+            </p>
+        </section>
+
+        <section id="age-analysis">
+            <h2>연령대별 관절염증상 발병 양상과 주의 대상</h2>
+            <p>
+                과거의 임상 데이터와 비교했을 때 2026년 기준 관절염증상 의 발병 시기는 한층 더 다각화되고 있습니다. 스포츠 활동의 다양화와 비만율 상승, 장시간의 컴퓨터 및 모바일 기기 사용 등은 젊은 층의 근골격계에 부담을 지우는 주요인으로 지목되고 있습니다. 이에 따라 각 연령 구간별로 중점적으로 관찰해야 할 관절염증상 의 전조 현상과 예방 전략에 차이가 생기게 됩니다.
+            </p>
+            <p>
+                최근 연구에 따르면 20대 와 30대 의 젊은 성인층에서는 스포츠 손상이나 교통사고 등의 외상성 원인, 혹은 무리한 근력 강화 활동으로 인한 반월상 연골판 손상이 주된 원인으로 꼽힙니다. 이 시기에는 통증이 발생해도 젊음만을 믿고 방치하다가 만성 염증으로 이행하는 경향이 짙습니다. 40대 와 50대 의 중장년층에 접어들면 호르몬 분비의 변화와 기초 대사량 감소에 따른 체중 부하 가중으로 무릎 내측 연골의 마모가 서서히 가시화되기 시작합니다. 특히 여성이 남성에 비해 폐경 이후 골밀도가 저하되면서 관절 주변의 미세 염증 반응이 활발해집니다. 마지막으로 60대 이상의 고령층에서는 전형적인 퇴행성 관절 질환이 지배적이며 전신 관절의 전반적인 유연성 손실과 더불어 골격 변형이 진행되는 고위험군 단계에 해당하게 됩니다.
+            </p>
+            
+            <div class="visual-chart">
+                <div class="chart-title">연령대별 관절염 관련 관절 부하 지수 및 평균 관리 필요도 추이 (2026년 기준)</div>
+                <div class="chart-row">
+                    <div class="chart-label">20대 청년층</div>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-fill" style="width: 35%; background-color: #8fae9b;">35%</div>
+                    </div>
+                    <div class="chart-value">스포츠 외상 및 손목 염증 관리</div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">30대 직장인</div>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-fill" style="width: 50%; background-color: #6c9a81;">50%</div>
+                    </div>
+                    <div class="chart-value">거북목 유발 경추 관절염 증가</div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">40대 중년층</div>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-fill" style="width: 70%; background-color: #4b8063;">70%</div>
+                    </div>
+                    <div class="chart-value">연골 약화 및 활막 부종 시작</div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">50대 장년층</div>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-fill" style="width: 85%; background-color: #2e6648;">85%</div>
+                    </div>
+                    <div class="chart-value">연골 마모 본격화 및 호르몬 영향</div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">60대 이상 고령층</div>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-fill" style="width: 95%; background-color: #1a4d31;">95%</div>
+                    </div>
+                    <div class="chart-value">광범위한 퇴행성 관절염 및 수술 고려</div>
+                </div>
+            </div>
+
+            <p>
+                연령대별로 통증의 완화 양상이나 발생 위치가 상이하므로 이에 적합한 맞춤형 예방 가이드와 맞춤 영양 솔루션을 선제적으로 도입해야 관절 수명을 늘릴 수 있습니다. 자녀 세대부터 고령 세대까지 온 가족이 함께 관절 상태를 주기적으로 체크할 수 있도록 돕는 것이 이 가이드의 최우선 목적입니다.
+            </p>
+        </section>
+
+        <section id="cost-analysis">
+            <h2>의학적 개입 및 영양 관리에 따른 예상 금액과 비용 분석</h2>
+            <p>
+                관절 손상을 조기에 관리하고 일상의 복귀를 꾀할 때 실질적으로 마주하게 되는 부분은 경제적 비용에 대한 현실적인 계산 입니다. 병원에 직접 내원하여 정밀 검사를 받거나 수술 및 물리 치료를 처방받는 요금 체계는 물론, 일상적인 자가 예방 관리를 위해 섭취하는 건강 기능 식품의 구매 비용 등 전반적인 예산 수립이 요구됩니다.
+            </p>
+            <p>
+                외래 진료 시 엑스레이 검사나 초음파, 혹은 정밀 정밀 진단 목적의 MRI 촬영을 진행하게 될 때 소요되는 비용 과 장기 도수 치료의 금액 수준은 의료기관의 형태와 건강보험 비급여 적용 비율에 따라 차이가 나타납니다. 2026년 기준 1회당 정형외과 도수 치료 요금 의 경우 평균적으로 8만 원에서 18만 원 수준의 예상 견적 이 성립됩니다. 여기에 최근 관절 주사 요법의 기술적 진보로 등장한 유전자 주사나 연골 재생 주사는 회당 수십만 원의 가격 으로 책정되는 경우가 존재합니다. 지속 관리를 위해 영양 성분이나 원료 브랜드를 꼼꼼히 대조해 보며 가장 합리적인 가입 요건 및 신규 구매 할인 혜택이 주어지는 전문 몰을 서칭하게 되는 이유가 여기에 있습니다.
+            </p>
+
+            <table>
+                <caption>관절염 주요 보존적 치료 항목별 평균 예상 금액 안내</caption>
+                <thead>
+                    <tr>
+                        <th>치료 및 관리 종류</th>
+                        <th>평균 소요 금액 범위</th>
+                        <th>치료 주기 및 특징</th>
+                        <th>정부 지원 및 혜택 해당 여부</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>물리치료 및 체외충격파</td>
+                        <td>3만 원 내외에서 15만 원선</td>
+                        <td>주 2회 내외 권장, 급성 및 만성 염증 완화</td>
+                        <td>건강보험 급여 항목 일부 포함</td>
+                    </tr>
+                    <tr>
+                        <td>도수치료 및 재활 컨설팅</td>
+                        <td>8만 원에서 20만 원 범위</td>
+                        <td>회당 기준 단가, 도수 전문 물리치료사 집도</td>
+                        <td>실손의료비 개인 약관 대조 필요</td>
+                    </tr>
+                    <tr>
+                        <td>관절 주사 및 영양 약물</td>
+                        <td>10만 원에서 50만 원 이상</td>
+                        <td>성분에 따라 차이, 연골 보호제 투여 목적</td>
+                        <td>비급여 진료비 구성이 높은 경향</td>
+                    </tr>
+                    <tr>
+                        <td>연골 콘드로이친 영양제 브랜드</td>
+                        <td>월 평균 4만 원에서 9만 원 선</td>
+                        <td>정기 섭취 권장, MSM 및 글루코사민 복합</td>
+                        <td>신규 회원 가입 할인 및 사은품 혜택 이용</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>
+                장기적인 관리 계획에 있어서 정기적인 지출 비용을 효율적으로 축소하고 적절한 혜택 을 얻기 위해 사전에 여러 정보 플랫폼을 통해 온라인 할인 이벤트, 신규 유치 프로모션, 추가 상품권 및 사은품 지급 행사, 그리고 일정 수준의 현금지원 혜택을 꼼꼼히 활용하는 스마트한 구매 가이드가 권장됩니다.
+            </p>
+        </section>
+
+        <section id="community">
+            <h2>대형 커뮤니티 및 소셜 채널의 실제 후기 분석</h2>
+            <p>
+                의료 현장에서 전하는 정형화된 학술적 지식 이외에도 실제 통증을 일상에서 장기적으로 극복해 온 일반 환자들의 내돈내산 후기 와 다양한 일상 관리 노하우는 신뢰성 있는 이정표 역할을 합니다. 많은 소비자들이 네이버 와 구글 검색 엔진을 비롯하여 유튜브 브이로그나 정보 채널을 통해 다양한 실제 치료 경험담을 적극적으로 구독하고 있습니다.
+            </p>
+            <p>
+                국내 주요 인터넷 커뮤니티인 디시인사이드(디시) 관절 갤러리나 보배드림 자유게시판, 에펨코리아(펨코)의 운동 게시판 등에서는 만성 관절 통증을 완화하는 데 직접적인 도움이 되었던 병원 목록과 가장 저렴한곳 혹은 제일 싼곳 에 대한 좌표 공유가 활발합니다. 특히 에펨코리아 내에서는 젊은 나이에 조기 무릎 연골 연화증을 극복한 운동법 후기 등이 높은 조회수를 기록하기도 하며, 인스타그램과 페이스북 등지에서는 저분자 콜라겐이나 특정 건강 보조 브랜드 순위 에 대한 솔직한 비교 글이 피드를 메우고 있습니다.
+            </p>
+            <p>
+                이에 더해 모바일 기반의 즉각적인 교류가 가능한 카카오톡 오픈채팅방이나 텔레그램 관절 자가 관리 커뮤니티 그룹에서는 실시간 통증 발작 대처법이나 전국의 숨은 명의에 관한 소문이 활발히 수집됩니다. 커뮤니티에서 공유되는 다이렉트 자가 예방 관리 제품이나 의료 보조 장비들은 광고성 정보를 걸러내기 위해 사용 후기를 대조해 가며 자신에게 알맞은 합리적인 브랜드 제품을 분별해내는 필터링 역량이 함께 권유됩니다.
+            </p>
+        </section>
+
+        <section id="ai-health">
+            <h2>인공지능 의료 분석 및 건강 관리 앱 활용 전략</h2>
+            <p>
+                인공지능 분석과 의료 정보학의 비약적 발전이 거듭된 2026년 오늘날, 개인은 자택에서도 정교한 기술을 이용해 가볍게 1차 자가 판단을 시도해 볼 수 있는 디지털 인프라를 보유하게 되었습니다. 단순 검색에 머무르지 않고 일상에서 쉽게 활용 가능한 최첨단 스마트 기기용 헬스케어 어플 이나 계산기 프로그램을 연동하는 사용자가 늘어난 이유도 여기에 있습니다.
+            </p>
+            <p>
+                사용자는 모바일 스마트폰에 탑재된 토스 건강 분석 인터페이스나 각종 제약 기관에서 무료 배포하는 건강 기록 계산기 서비스를 활용하여 손쉽게 현재 통증 정도에 근거한 정량적 점수를 수치화할 수 있습니다. 수집된 골격 상태와 움직임 분석 정보는 제미나이 또는 챗지피티 와 같은 고도화된 대화형 AI 시스템의 진료 전 분석 가이드를 거쳐 어떠한 종류의 전문 과목 치료가 최우선적으로 선행되어야 하는지 명쾌한 대안을 제시받게 됩니다.
+            </p>
+            <div class="highlight-box">
+                <strong>스마트 헬스케어 기기 연동의 강점:</strong> 사용자가 걷거나 가벼운 조깅을 수행할 때 웨어러블 스마트 기기가 무릎에 걸리는 비대칭 부하 압력을 자동으로 측정하고, 이를 인공지능이 분석하여 비정상 보행 신호를 감지합니다. 이로써 만성 관절염으로 이행하기 전에 다이렉트 로 경고하여 보행 습관의 즉각적인 교정을 가능하게 합니다.
+            </div>
+            <p>
+                다만 첨단 스마트 기기 및 어플을 통한 분석은 사용자의 편의를 도모하기 위한 일차적인 스크리닝 절차일 뿐 정교한 방사선 검사와 전문의 정밀 면담을 완벽하게 대체할 수는 없으므로, 자가 계산 결과에 이상 징후가 포착되면 즉각적으로 공인된 임상 검진을 조치하는 현명한 생활 방식이 필요합니다.
+            </p>
+        </section>
+
+        <section id="trust" class="external-links">
+            <h2>공신력 있는 관절 질환 및 의학 정보 외부 공식 참고 사이트</h2>
+            <p>질환에 대한 왜곡 없는 정확한 지식과 합리적인 건강 관리를 실현하려면 아래의 공인된 정부 기관 및 전문 포털의 자료를 참고하시기 바랍니다.</p>
+            <ul>
+                <li><a href="https://painutreati.koreahankang.com" target="_blank" rel="nofollow noopener">메디컬 헬스 가이드 관절염 정밀 치료 정보</a>: 관절 건강 보존을 위한 통합 학술 데이터 및 임상 보고서 확인</li>
+                <li><a href="https://namu.wiki/w/%EA%B4%80%EC%A0%88%EC%97%BC" target="_blank" rel="nofollow noopener">나무위키 관절염 정의 및 분류</a>: 질병의 역사와 기초 생리학적 진행 체계 확인</li>
+                <li><a href="https://www.kdca.go.kr" target="_blank" rel="nofollow noopener">질병관리청 국가건강정보포털</a>: 한국인 다발성 관절 질환 통계 및 국가 공식 예방 지침</li>
+            </ul>
+        </section>
+
+        <section id="self-test">
+            <h2>관절 건강 상태 및 맞춤형 관리 솔루션 종합 자가진단 신청</h2>
+            <p style="text-align: center;">
+                아래 문항에 자신의 관절 상태와 일상 통증 정도를 정확하게 입력하시면, 개인의 나이대와 활동 패턴에 최적화된 2026년형 관절 건강 예방 맞춤 가이드 및 예상 관리 방안을 정밀 정리하여 다이렉트 이메일 또는 유선 상담으로 친절히 전해 드립니다. 입력된 정보가 풍부할수록 인공지능 알고리즘이 정교한 분석을 도출해 냅니다.
+            </p>
+            
+            <form action="/submit-health-diagnosis" method="POST">
+                <label for="name">성함 및 연락처 기재</label>
+                <input type="text" id="name" name="name" required placeholder="예: 홍길동 (입력하신 성함으로 분석서가 발행됩니다)">
+
+                <label for="phone">연락처 혹은 이메일 주소</label>
+                <input type="tel" id="phone" name="phone" required placeholder="예: 010-0000-0000 또는 메일 주소">
+
+                <label for="age-group-select">신청자 연령대 정보 선택</label>
+                <select id="age-group-select" name="age_group" required>
+                    <option value="">연령대를 선택해 주세요</option>
+                    <option value="20">20대 청년층 (스포츠 활동 및 과사용 관련)</option>
+                    <option value="30">30대 직장인 (컴퓨터 장시간 사용 및 미세 통증)</option>
+                    <option value="40">40대 중년층 (초기 퇴행 증상 대조)</option>
+                    <option value="50">50대 장년층 (연골 보존 및 적극적 관리 대상)</option>
+                    <option value="60">60대 이상 고령층 (퇴행성 관절염 예방 및 수술 치료 대조)</option>
+                </select>
+                
+                <label>통증을 빈번하게 느끼시는 관절 부위 (복수 선택 가능)</label>
+                <div class="form-checkbox-group">
+                    <label class="form-checkbox-label"><input type="checkbox" name="joints[]" value="knee"> 무릎 관절</label>
+                    <label class="form-checkbox-label"><input type="checkbox" name="joints[]" value="wrist"> 손목 및 손가락</label>
+                    <label class="form-checkbox-label"><input type="checkbox" name="joints[]" value="hip"> 고관절</label>
+                    <label class="form-checkbox-label"><input type="checkbox" name="joints[]" value="ankle"> 발목 및 발가락</label>
+                    <label class="form-checkbox-label"><input type="checkbox" name="joints[]" value="back"> 요추 및 골반</label>
+                    <label class="form-checkbox-label"><input type="checkbox" name="joints[]" value="shoulder"> 어깨 및 팔꿈치</label>
+                </div>
+
+                <label for="pain-period">통증이 지속된 평균 기간</label>
+                <select id="pain-period" name="pain_period" required>
+                    <option value="">지속 기간 선택</option>
+                    <option value="under-1">1주 이내의 급성 통증</option>
+                    <option value="under-4">1개월 미만의 일시적 염증</option>
+                    <option value="1-6">1개월 이상 6개월 미만의 중기 통증</option>
+                    <option value="over-6">6개월 이상의 장기적 만성 통증</option>
+                </select>
+
+                <label for="pain-level">현재 느끼는 가장 심한 관절 통증 지수 (1부터 10까지 선택, 수치가 높을수록 극심한 통증)</label>
+                <input type="number" id="pain-level" name="pain_level" min="1" max="10" placeholder="예: 4 (가벼운 뻐근함은 2, 일상 방해 수준은 6 이상)">
+
+                <label for="stiffness">아침에 잠에서 깨어났을 때 관절이 뻣뻣한 조조강직 상태가 약 30분 이상 동반되나요?</label>
+                <select id="stiffness" name="stiffness">
+                    <option value="no">동반되지 않으며 가볍게 움직일 수 있습니다</option>
+                    <option value="yes">눈에 띄게 뻣뻣하고 주무르거나 온찜질을 해야 완화됩니다</option>
+                </select>
+
+                <label for="message">상세 증상 기재 및 맞춤 상담 시 특별 요청 사항</label>
+                <textarea id="message" name="message" rows="5" placeholder="예: 무릎 연골 연화증 관련 영양제 추천 및 전문 물리 치료의 평균 금액 견적이 궁금합니다. 최근 도수치료 어플을 통해 도출한 점수 이력에 대한 피드백도 함께 원합니다."></textarea>
+
+                <div style="text-align: center; margin-top: 25px;">
+                    <button type="submit" class="btn-cta">정밀 인공지능 기반 분석 및 맞춤형 관리 가이드 받기</button>
+                </div>
+            </form>
+        </section>
+  
+    </div>
+  
